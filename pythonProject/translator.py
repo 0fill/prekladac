@@ -68,7 +68,7 @@ class Translator:
             print(f"{key} --> {self.data[key][0]} and was {self.data[key][1]} translated")
 
     def sort_data(self):
-        self.data = dict(sorted(self.data.items(), key=lambda x: x[1], reverse=True))
+        self.data = dict(sorted(self.data.items(), key=lambda x: x[1], reverse=True))       #doesnt work
         print(self.data)
 
     def del_translation(self, word):
