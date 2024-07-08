@@ -68,8 +68,7 @@ class Translator:
             print(f"{key} --> {self.data[key][0]} and was {self.data[key][1]} translated")
 
     def sort_data(self):
-        self.data = dict(sorted(self.data.items(), key=lambda x: x[1], reverse=True))       #doesnt work
-        print(self.data)
+        self.data = dict(sorted(self.data.items(), key=lambda x: x[1][1], reverse=True))       #doesnt work
 
     def del_translation(self, word):
         del self.data[word][0]
@@ -77,8 +76,7 @@ class Translator:
     def show_10best(self):
         self.sort_data()
         for i in range(10):
-            print(
-                f"{i + 1}. {list(self.data.keys())[i]} --> {list(self.data.values())[i][0]} with popularity of {list(self.data.values())[i][1]}")
+            print(f"{i + 1}. {list(self.data.keys())[i]} --> {list(self.data.values())[i][0]} with popularity of {list(self.data.values())[i][1]}")
 
     def show_10worst(self):
         self.sort_data()
