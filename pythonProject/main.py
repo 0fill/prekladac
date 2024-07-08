@@ -1,28 +1,44 @@
 from translator import Translator
 
-
-t =  Translator()
-
+t = Translator()
 
 while True:
-    print(f"welcome to my translator from cz to en enjoy\n\n1-translate\n2-add world\n3-delete translation\n4-show 10 best words"
-          f"\n5-show 10 worst words\n6-replace translation\n7-exit")
+    print(
+        f"welcome to my translator from cz to en enjoy\n\n1-translate\n2-change words\n3-change translations"
+        f"\n4-show 10 best words\n5-show 10 worst words\n6-exit")
     choice = input("Enter your choice: ")
-    if choice == "1":       #translation
-        t.translate(t.find_czword())
+    if choice == "1":  #translation
+        print(t.translate(t.find_czword()))
+
     elif choice == "2":
-        t.add_word(input("Enter a czech word: "),input("Enter english translation: "))
+        print("""1-add a word
+        2-delete a word
+        3-replace a word""")
+        choice2 = input("Enter your choice: ")
+        if choice2 == "1":
+            t.add_word(input("Enter a word: "), input("enter translation: "))
+        elif choice2 == "2":
+            t.remove_word(t.find_czword())
+        elif choice2 == "3":
+            t.replace_word(t.find_czword(), input(f"Enter a new word: "))
+
     elif choice == "3":
-        t.remove_word(t.find_czword())
+        print("""1-add a translation
+        2-delete a translation
+        3- replace a translation""")
+        choice3 = input("Enter your choice: ")
+        if choice3 == "1":
+            t.add_translation(t.find_czword(), input("Enter a translation: "))
+        elif choice3 == "2":
+            t.del_translation(t.find_czword())
+        elif choice3 == "3":
+            t.replace_translation(t.find_czword())
+
     elif choice == "4":
-        t.del_translation(t.find_enword())
-    elif choice == "5":
         t.show_10best()
-    elif choice == "6":
+    elif choice == "5":
         t.show_10worst()
-    elif choice == "7":
-        t.replace_translation(t.find_czword(), input("Enter a new translation: "))
-    elif choice == "8":
+    elif choice == "6":
         break
     elif choice == '*':
         t.print_data()
