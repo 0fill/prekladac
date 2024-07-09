@@ -1,55 +1,56 @@
 class Translator:
     def __init__(self):
         self.data: dict = {"jablko": [42, "apple"],
-                     "kočka": [17, "cat"],
-                     "strom": [91, "tree"],
-                     "dům": [58, "house"],
-                     "slunce": [29, "sun"],
-                     "knihovna": [64, "library"],
-                     "hory": [5, "mountains"],
-                     "káva": [88, "coffee"],
-                     "vlak": [12, "train"],
-                     "dítě": [37, "child"],
-                     "květina": [19, "flower"],
-                     "voda": [76, "water"],
-                     "čas": [81, "time"],
-                     "pes": [66, "dog"],
-                     "město": [94, "city"],
-                     "most": [50, "bridge"],
-                     "pláž": [3, "beach"],
-                     "ryba": [8, "fish"],
-                     "kniha": [25, "book"],
-                     "okno": [70, "window"],
-                     "křeslo": [45, "chair"],
-                     "telefon": [75, "phone"],
-                     "stůl": [14, "table"],
-                     "papír": [31, "paper"],
-                     "klobouk": [60, "hat"],
-                     "dveře": [10, "door"],
-                     "krabice": [47, "box"],
-                     "kruh": [23, "circle"],
-                     "hvězda": [84, "star"],
-                     "kamion": [55, "truck"],
-                     "písek": [36, "sand"],
-                     "kostel": [68, "church"],
-                     "hodiny": [97, "clock"],
-                     "tráva": [2, "grass"],
-                     "písmeno": [18, "letter"],
-                     "kámen": [72, "stone"],
-                     "kolo": [33, "wheel"],
-                     "kabelka": [49, "purse"],
-                     "křídlo": [7, "wing"],
-                     "koule": [22, "ball"],
-                     "křižovatka": [41, "intersection"],
-                     "kružnice": [15, "circle"],
-                     "koberec": [53, "carpet"],
-                     "klíč": [90, "key"],
-                     "křoví": [27, "bush"],
-                     "křišťál": [79, "crystal"],
-                     "kabát": [38, "coat"],
-                     }
+                           "kočka": [17, "cat"],
+                           "strom": [91, "tree"],
+                           "dům": [58, "house"],
+                           "slunce": [29, "sun"],
+                           "knihovna": [64, "library"],
+                           "hory": [5, "mountains"],
+                           "káva": [88, "coffee"],
+                           "vlak": [12, "train"],
+                           "dítě": [37, "child"],
+                           "květina": [19, "flower"],
+                           "voda": [76, "water"],
+                           "čas": [81, "time"],
+                           "pes": [66, "dog"],
+                           "město": [94, "city"],
+                           "most": [50, "bridge"],
+                           "pláž": [3, "beach"],
+                           "ryba": [8, "fish"],
+                           "kniha": [25, "book"],
+                           "okno": [70, "window"],
+                           "křeslo": [45, "chair"],
+                           "telefon": [75, "phone"],
+                           "stůl": [14, "table"],
+                           "papír": [31, "paper"],
+                           "klobouk": [60, "hat"],
+                           "dveře": [10, "door"],
+                           "krabice": [47, "box"],
+                           "kruh": [23, "circle"],
+                           "hvězda": [84, "star"],
+                           "kamion": [55, "truck"],
+                           "písek": [36, "sand"],
+                           "kostel": [68, "church"],
+                           "hodiny": [97, "clock"],
+                           "tráva": [2, "grass"],
+                           "písmeno": [18, "letter"],
+                           "kámen": [72, "stone"],
+                           "kolo": [33, "wheel"],
+                           "kabelka": [49, "purse"],
+                           "křídlo": [7, "wing"],
+                           "koule": [22, "ball"],
+                           "křižovatka": [41, "intersection"],
+                           "kružnice": [15, "circle"],
+                           "koberec": [53, "carpet"],
+                           "klíč": [90, "key"],
+                           "křoví": [27, "bush"],
+                           "křišťál": [79, "crystal"],
+                           "kabát": [38, "coat"],
+                           }
 
-        #searchs
+        #searches
+
     def find_czword(self):
         choice = input(f"what are you looking for(cz)? ")
         words = self.data.keys()
@@ -77,11 +78,11 @@ class Translator:
         self.data.update({word: [0, translation]})
 
     def remove_word(self, word):
-        self.data.pop([word])
+        self.data.pop(word)
 
     def replace_word(self, word, new_word):
         temp = self.data.get(word)
-        self.data.pop([word])
+        self.data.pop(word)
         self.data.update({new_word: temp})
 
     # translation operation
@@ -91,8 +92,8 @@ class Translator:
 
     def replace_translation(self, word):
         for t in range(len(self.data.get(word)[1:])):
-            if input(f"do you want to replace {self.data.get(word)[t + 1]}").lower() == "y":
-                self.data.get(word)[t + 1] = input(f"set a new translation")
+            if input(f"do you want to replace {self.data.get(word)[t + 1]} y/n: ").lower() == "y":
+                self.data.get(word)[t + 1] = input(f"set a new translation: ")
 
     def del_translation(self, word):
         for t in range(len(self.data.get(word)[1:])):
@@ -119,5 +120,5 @@ class Translator:
         self.sort_data()
         for i in range(10):
             print(
-                f"{i + 1}. {list(self.data.keys())[-i-1]} --> {list(self.data.values())[-i-1][1:]} with popularity of "
-                f"{list(self.data.values())[-i-1][0]}")
+                f"{i + 1}. {list(self.data.keys())[-i - 1]} --> {list(self.data.values())[-i - 1][1:]} with popularity of "
+                f"{list(self.data.values())[-i - 1][0]}")
