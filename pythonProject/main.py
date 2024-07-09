@@ -8,7 +8,8 @@ while True:
         f"\n4-show 10 best words\n5-show 10 worst words\n6-exit")
     choice = input("Enter your choice: ")
     if choice == "1":  #translation
-        print(t.translate(t.find_czword()))
+        for i in t.translate(t.find_czword()):
+            print(i)
 
     elif choice == "2":
         print("""1-add a word

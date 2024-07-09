@@ -1,6 +1,6 @@
 class Translator:
     def __init__(self):
-        self.data = {"jablko": [42, "apple"],
+        self.data: dict = {"jablko": [42, "apple"],
                      "kočka": [17, "cat"],
                      "strom": [91, "tree"],
                      "dům": [58, "house"],
@@ -21,7 +21,7 @@ class Translator:
                      "kniha": [25, "book"],
                      "okno": [70, "window"],
                      "křeslo": [45, "chair"],
-                     "telefon": [99, "phone"],
+                     "telefon": [75, "phone"],
                      "stůl": [14, "table"],
                      "papír": [31, "paper"],
                      "klobouk": [60, "hat"],
@@ -69,7 +69,7 @@ class Translator:
 
     def translate(self, word):
         self.data.get(word)[0] += 1
-        return self.data.get(word)[1:]
+        return (i for i in self.data.get(word)[1:])
 
     # words operation
 
@@ -119,5 +119,5 @@ class Translator:
         self.sort_data()
         for i in range(10):
             print(
-                f"{i + 1}. {list(self.data.keys())[-i]} --> {list(self.data.values())[-i][1:]} with popularity of "
-                f"{list(self.data.values())[-i][0]}")
+                f"{i + 1}. {list(self.data.keys())[-i-1]} --> {list(self.data.values())[-i-1][1:]} with popularity of "
+                f"{list(self.data.values())[-i-1][0]}")
