@@ -119,14 +119,14 @@ class Translator:
     def sort_data(self):
         self.data = dict(sorted(self.data.items(), key=lambda x: x[1][0], reverse=True))
 
-    def show_10best(self):
+    def show_10best(self):  #too lazy to revork
         self.sort_data()
         for i in range(10):
             print(
                 f"{i + 1}. {list(self.data.keys())[i]} --> {list(self.data.values())[i][1:]} with popularity of "
                 f"{list(self.data.values())[i][0]}")
 
-    def show_10worst(self):
+    def show_10worst(self):     #too lazy to revork
         self.sort_data()
         for i in range(10):
             print(
