@@ -46,7 +46,7 @@ class Translator:
                            "klíč": [90, "key"],
                            "křoví": [27, "bush"],
                            "křišťál": [79, "crystal"],
-                           "kabát": [38, "coat"],
+                           "kabát": [38, "coat"]
                            }
 
         #searches
@@ -68,7 +68,9 @@ class Translator:
                     if input(f"is this your choice {k}? (y/n) ").lower() == "y":
                         return k
 
-    def translate(self, word):
+    def translate(self, word ):
+        if word == None:
+            return ""
         self.data.get(word)[0] += 1
         return (i for i in self.data.get(word)[1:])
 
@@ -78,9 +80,13 @@ class Translator:
         self.data.update({word: [0, translation]})
 
     def remove_word(self, word):
+        if word == None:
+            return
         self.data.pop(word)
 
     def replace_word(self, word, new_word):
+        if word == None:
+            return
         temp = self.data.get(word)
         self.data.pop(word)
         self.data.update({new_word: temp})
@@ -91,11 +97,15 @@ class Translator:
         self.data.get(word).append(translation)
 
     def replace_translation(self, word):
+        if word == None:
+            return
         for t in range(len(self.data.get(word)[1:])):
             if input(f"do you want to replace {self.data.get(word)[t + 1]} y/n: ").lower() == "y":
                 self.data.get(word)[t + 1] = input(f"set a new translation: ")
 
     def del_translation(self, word):
+        if word == None:
+            return
         for t in range(len(self.data.get(word)[1:])):
             if input(f"do you want to remove {self.data.get(word)[t + 1]}").lower() == "y":
                 self.data.get(word).pop(t + 1)
@@ -120,5 +130,5 @@ class Translator:
         self.sort_data()
         for i in range(10):
             print(
-                f"{i + 1}. {list(self.data.keys())[-i - 1]} --> {list(self.data.values())[-i - 1][1:]} with popularity of "
+                f"{i + 1}. {list(self.data.keys())[-i - 1]} --> {self.data.values()[-i - 1][1:]} with popularity of "
                 f"{list(self.data.values())[-i - 1][0]}")
